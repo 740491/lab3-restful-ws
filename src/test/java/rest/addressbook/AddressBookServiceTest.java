@@ -327,6 +327,10 @@ public class AddressBookServiceTest {
       .request().delete();
     assertEquals(404, response.getStatus());
 
+    //Since two same calls should produce the same result
+    // (return 204 as deleted user but it returns 404 the second time because it does not exist anymore)
+    // it does not fully satisfy the definition of idempotent
+
     //////////////////////////////////////////////////////////////////////
     // Verify that DELETE /contacts/person/2 is well implemented by the service, i.e
     // complete the test to ensure that it is idempotent but not safe
